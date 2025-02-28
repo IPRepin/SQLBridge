@@ -8,6 +8,8 @@ class Settings(BaseSettings):
         env_file=".env", env_ignore_empty=True, extra="ignore"
     )
 
+    LOG_LEVEL: str
+
     SQLITE_DB_PATH: str
 
     POSTGRES_USER: str
@@ -18,21 +20,9 @@ class Settings(BaseSettings):
 
     @computed_field
     @property
-    def asyncpg_url(self) -> PostgresDsn:
-        return PostgresDsn.build(
-            scheme="postgresql+asyncpg",
-            username=self.POSTGRES_USER,
-            password=self.POSTGRES_PASSWORD,
-            port=self.POSTGRES_PORT,
-            host=self.POSTGRES_HOST,
-            path=self.POSTGRES_DB,
-        )
-
-    @computed_field
-    @property
     def postgres_url(self) -> PostgresDsn:
         return PostgresDsn.build(
-            scheme="postgresql",
+            scheme="postgresql+psycopg2",
             username=self.POSTGRES_USER,
             password=self.POSTGRES_PASSWORD,
             port=self.POSTGRES_PORT,

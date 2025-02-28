@@ -12,7 +12,7 @@ class SQLiteDB:
     def get_tables(self):
         cursor = self.conn.cursor()
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        tables = [row['name'] for row in cursor.fetchall()]
+        tables = [row['name'] for row in cursor.fetchall() if row['name'] != 'sqlite_sequence']
         return tables
 
     def get_table_columns(self, table_name):
