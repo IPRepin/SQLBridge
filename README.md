@@ -29,11 +29,7 @@ PostgreSQL.
 - **SQLite:** стандартный модуль `sqlite3` (входит в стандартную библиотеку Python).
 - **PostgreSQL:** сервер PostgreSQL.
 - **Библиотека для PostgreSQL:** [psycopg2-binary](https://www.psycopg.org/)  
-  Установка:
-  ```bash
-  pip install -r requirements.txt
-    ```
-
+  
 ## Структура проекта
 
 ```psql
@@ -55,7 +51,7 @@ PostgreSQL.
 
 1. ### Клонирование репозитория:
    ```bash
-   git clone <URL_репозитория>
+   git clone https://github.com/IPRepin/SQLBridge.git
    cd project
 2. ### Создание виртуального окружения:
    #### Для Linux/Mac:
@@ -70,20 +66,20 @@ PostgreSQL.
 3. ### Установка зависимостей:
     ```bash
     pip install -r requirements.txt  # Если есть файл requirements.txt
-    # Или напрямую:
-    pip install psycopg2-binary
    ```
 4. ### Настройка файла конфигурации:
     ```ini
     [sqlite]
-    db_path = ./data/mydatabase.sqlite
+    SQLITE_DB_PATH=path_your_sqlite_database
     
     [postgres]
-    host = localhost
-    port = 5432
-    dbname = mydb
-    user = myuser
-    password = mypassword
+    POSTGRES_HOST=localhost
+    POSTGRES_PORT=5432 #your local postgres host(default 5432)
+    POSTGRES_DB=your_local_db_name
+    POSTGRES_USER=your_local_postgres_user
+    POSTGRES_PASSWORD=your_local_postgres_password
+    
+    LOG_LEVEL=level_logging(INFO)
     ```
 ## Запуск приложения
 ```bash
