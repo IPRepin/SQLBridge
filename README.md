@@ -31,7 +31,7 @@ PostgreSQL.
 - **Библиотека для PostgreSQL:** [psycopg2-binary](https://www.psycopg.org/)  
   Установка:
   ```bash
-  pip install psycopg2-binary
+  pip install -r requirements.txt
     ```
 
 ## Структура проекта
